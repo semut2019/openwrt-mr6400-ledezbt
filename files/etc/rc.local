@@ -1,2 +1,8 @@
-/etc/init.d/modemctl start &
+#!/bin/sh -e
+# rc.local
+
+# Aktifkan modem + ping test
+/etc/init.d/modemctl start
+ping -c 4 8.8.8.8 > /tmp/pingtest.txt &
+
 exit 0
