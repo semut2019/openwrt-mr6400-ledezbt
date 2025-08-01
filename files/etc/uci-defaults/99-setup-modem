@@ -1,3 +1,10 @@
 #!/bin/sh
-uci set semutcriminals.modem.apn='internet'
-uci commit semutcriminals
+
+uci set network.lte=interface
+uci set network.lte.proto='qmi'
+uci set network.lte.device='/dev/cdc-wdm0'
+uci set network.lte.apn='internet'
+uci set network.lte.auto='1'
+
+uci commit network
+/etc/init.d/network reload
