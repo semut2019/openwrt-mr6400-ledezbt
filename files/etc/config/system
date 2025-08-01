@@ -1,0 +1,10 @@
+config system
+	option hostname 'OpenWrt'
+	option timezone 'UTC'
+
+config led 'led_lan'
+	option name 'LAN'
+	option sysfs 'green:lan'
+	option trigger 'netdev'
+	option dev 'br-lan'
+	option mode 'link tx rx'
