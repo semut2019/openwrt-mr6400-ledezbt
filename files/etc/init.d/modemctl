@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=15
+
+start() {
+  logger -t modemctl "Starting internal Fibocom L716 modem..."
+  uqmi -d /dev/cdc-wdm0 --set-autoconnect enable
+  uqmi -d /dev/cdc-wdm0 --start-network internet --autoconnect
+}
+
+stop() {
+  logger -t modemctl "Stopping modem..."
+  uqmi -d /dev/cdc-wdm0 --stop-network 0xffffffff --autoconnect
+}
